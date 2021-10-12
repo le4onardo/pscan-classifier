@@ -1,0 +1,6 @@
+RA_TIME_FORMAT="%Y-%m-%d %H:%M:%S.%f"
+# RA_FIELD_WIDTH="variable"
+RA_FIELD_SPECIFIER="stime:24,flgs,tcpopt,proto:10,saddr:30,sport:20,dir,daddr:30,dport:20,pkts,spkts,dpkts,state:10,sload:20,dload:20,loss:20,rate:20,mean:20,stddev:20,runtime:20,idle:20,trans,sum,sttl,dttl,pcr,tcprtt,synack,ackdat,swin:10,dwin:10"
+
+
+

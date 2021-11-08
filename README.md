@@ -1,6 +1,7 @@
 # pscan-classifier
 Tool to generate machine learning models to detect port scans
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Prerequisites
 
@@ -20,6 +21,8 @@ Tool to generate machine learning models to detect port scans
 
 There are other python dependencies not listed here, but they can be installed on the way.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Usage
 
 This project needs several .argus files, i.e. network flow information files, stored in "./trainData/netflows" folder. These files must have authentical network flows and port scan network flows. You can generate those files using argus and argus clients to record network activity, or converting existing .pcap files to a netflow version (.argus). Refer to [argus documentation](https://openargus.org/using-argus) on how to do that.
@@ -32,17 +35,41 @@ variables.json
 	"argusConfig": "./netflowConfFiles",
 	"trainingData": "./trainData/netflows",
 	"demoData": "./demoData",
-	"scannerIps": ["replace here", "replace here"], 
-	"targetIps": ["replace here", "replace here"] ,
-	"password": "replace here"
+	"scannerIps": ["scanner ip here", "scanner ip here"], 
+	"targetIps": ["target ip here", "target ip here"] ,
+	"password": "password here"
 }
 ```
 
-
 Finnally running the train.py file will generate a bagging trained model with the following steps:
 
-After dimensional reduction, the correlation matrix of remaining columns is displayed:
+After dimensional reduction, the correlation matrix of remaining columns is displayed.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/44624540/140670179-00e1f2f9-c81c-4cfe-8eea-970232d0c8ad.png?raw=true" alt="Correlation matrix"/>
+</p>
+At this point the dataframe is ready to be used in training. Once the training ends, two grapichs are displayed, the first decision tree of the bagged model
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/44624540/140670655-a0a01996-c754-4ae1-aef2-533162843d4a.png?raw=true" alt="Correlation matrix"/>
+</p>
+And the confusion matrix
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/44624540/140670714-fdeb1285-7834-4c9d-b46e-85fea215f8f0.png?raw=true" alt="Correlation matrix"/>
+</p>
+Lastly a column relevance grapich is displayed
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/44624540/140671570-031e8954-5570-4dd5-a160-ff837d9e1d94.png?raw=true" alt="Correlation matrix"/>
+</p>
+The model is already created with name bag.pkl.
 
-[correlation matrix](https://user-images.githubusercontent.com/44624540/140670179-00e1f2f9-c81c-4cfe-8eea-970232d0c8ad.png)
+--------------------------------------------------------------------------------------------------------------------------------
+
+### Demo
+
+To see the model in action use the demo.py file to view a real time netflow clasification. It will search for a model called bag.pkl and it will use argus in daemon mode to fetch the network traffic on the machine.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/44624540/140671810-d2c8bc88-eef8-44d8-995c-d0a715eb087b.png?raw=true" alt="Correlation matrix"/>
+</p>
+
+
 
 

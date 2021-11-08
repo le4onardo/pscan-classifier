@@ -67,9 +67,5 @@ The model is already created with name bag.pkl.
 
 To see the model in action use the demo.py file to view a real time netflow clasification. It will search for a model called bag.pkl and it will use argus in daemon mode to fetch the network traffic on the machine.
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/44624540/140671810-d2c8bc88-eef8-44d8-995c-d0a715eb087b.png?raw=true" alt="Correlation matrix"/>
+  <img src="https://user-images.githubusercontent.com/44624540/140672540-8e0c9af7-acaa-475e-a05e-0b0f680a96c5.png?raw=true" alt="Correlation matrix"/>
 </p>
-
-
-
-
